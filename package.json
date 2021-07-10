@@ -1,0 +1,21 @@
+{
+  "name": "math",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "example": "parcel example/index.html --dist-dir example/dist",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "parcel": "^2.0.0-beta.3.1"
+  },
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2"
+  },
+  "lint-staged": {
+    "{src, example}/**/*.{ts,tsx}": "prettier --write"
+  }
+}
