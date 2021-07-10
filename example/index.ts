@@ -1,1 +1,1 @@
-     console.log("示例启动成功");
+console.log("示例启动成功");
