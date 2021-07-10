@@ -1,1 +1,3 @@
-console.log("示例启动成功");
+import { bubble_3 } from "../src/Sort/bubble";
+
+console.log(bubble_3([4, 3, 2, 1]));
