@@ -1,11 +1,10 @@
-import { swap } from "../Utils/index"
-
 /**
  * 冒泡排序
  */
 
-// 1. 一边比较一边向后两两交换，将最大值 / 最小值冒泡到最后一位
+import { swap } from "../Utils/index"
 
+// 1. 一边比较一边向后两两交换，将最大值 / 最小值冒泡到最后一位
 export function bubble_1(arr: number[]) {
 
   for(let x = 0; x <arr.length - 1; x++) {
@@ -70,3 +69,38 @@ function singleSwap(arr: number[],x: number, y: number ) {
 
   return arr
 }
+
+/**
+ * 练习
+ */
+
+// 1. 输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
+// 输入: [10,2]
+// 输出: "102"
+
+export function minNumber(nums: number[]): string {
+  for(let x = 0; x < nums.length - 1; x++ ) {
+    for(let y = 0; y < nums.length - x -1; y++) {
+      if(+(nums[y].toString() + nums[y+1].toString()) > +(nums[y+1].toString() + nums[y].toString())) {
+        swap(nums, y, y+1)
+      }
+    }
+  }
+
+  return nums.join("")
+  
+};
+
+// 2. 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+// 输入: [0,1,0,3,12]
+// 输出: [1,3,12,0,0]
+
+export function moveZeroes(nums: number[]): void {
+  for(let x = 0; x < nums.length - 1; x++) {
+    for(let y = 0; y < nums.length - x- 1; y++) {
+      if(nums[y] === 0) {
+        swap(nums, y, y+1)
+      }
+    }
+  }
+};

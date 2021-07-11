@@ -1,3 +1,6 @@
-import { bubble_3 } from "../src/Sort/bubble";
+import { insertionSortList } from "../src/Sort/insert";
+import { ArrTurnToList, ListTurnToArr } from "../src/Utils";
 
-console.log(bubble_3([4, 3, 2, 1]));
+console.log(insertionSortList(ArrTurnToList([4, 2, 1, 3])));
+// 3303459
+// 3033459
