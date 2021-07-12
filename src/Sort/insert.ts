@@ -71,3 +71,33 @@ export function insertionSortList(head: ListNode | null) {
   }
   return ArrTurnToList(nums)
 };
+
+/**
+ * 手写
+ */
+
+// 1. 移动法
+export function insert_4(nums: number[]) {
+  for(let x = 1; x < nums.length; x++) {
+    let currentNumber = nums[x]
+    let y = x - 1
+    while(y >= 0 && nums[y] > currentNumber) {
+      nums[y+1] = nums[y]
+      y--
+    }
+    nums[y+1] = currentNumber
+  }
+
+  return nums
+}
+
+// 2. 交换法
+export function insert_5(nums: number[]) {
+  for(let x = 1; x < nums.length; x++) {
+    for(let y = x; y >= 0 && nums[y] < nums[y-1]; y--) {
+      [nums[y], nums[y-1]] = [nums[y-1], nums[y]]
+    }
+  }
+
+  return nums
+}

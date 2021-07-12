@@ -1,6 +1,3 @@
-import { insertionSortList } from "../src/Sort/insert";
-import { ArrTurnToList, ListTurnToArr } from "../src/Utils";
+import { partition } from "../src/Sort/quick"
 
-console.log(insertionSortList(ArrTurnToList([4, 2, 1, 3])));
-// 3303459
-// 3033459
+console.log(partition([4,5,6,7,8], 0, 5));

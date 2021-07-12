@@ -97,3 +97,24 @@ export function sortArray(nums: number[]): number[] {
 
   return nums
 };
+
+/**
+ * 手写
+ */
+
+export function select_3(nums: number[]) {
+  let minIndex: number
+  for(let x = 0; x < nums.length - 1; x++) {
+    minIndex = x
+    for(let y = x + 1; y < nums.length; y++) {
+      
+      if(nums[minIndex] > nums[y]) {
+        minIndex = y
+      }
+    }
+
+    [nums[x], nums[minIndex]] = [nums[minIndex], nums[x]]
+  }
+
+  return nums
+}
