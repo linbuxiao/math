@@ -1,3 +1,3 @@
-import { sortArray } from "../src/Sort/quick";
+import { threeSumClosest } from "../src/Sort/practice";
 
-console.log(sortArray([0]));
+console.log(threeSumClosest([0,2,1,-3], 1));
