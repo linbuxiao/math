@@ -18,6 +18,6 @@
     "prettier": "^2.3.2"
   },
   "lint-staged": {
-    "{example, src}/**/*.{ts,tsx}": "prettier --write"
+    "{example,src}/**/*.{ts,tsx}": "prettier --write"
   }
 }
