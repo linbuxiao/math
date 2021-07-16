@@ -5,12 +5,12 @@
  */
 
 export function isStraight(nums: number[]): boolean {
-  nums = nums.sort((a,b)=> a-b).filter(item => item !== 0)
-  if(nums[nums.length - 1] - nums[0] > 4) return false
+  nums = nums.sort((a, b) => a - b).filter((item) => item !== 0);
+  if (nums[nums.length - 1] - nums[0] > 4) return false;
 
-  for(let a = 0; a<nums.length - 1; a++) {
-    if(nums[a] === nums[a+1]) return false
+  for (let a = 0; a < nums.length - 1; a++) {
+    if (nums[a] === nums[a + 1]) return false;
   }
 
-  return true
-};
+  return true;
+}
