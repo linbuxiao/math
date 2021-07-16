@@ -1,2 +1,2 @@
-import { reverseWords } from "../src/Sword/58-1.翻转单词顺序";
-console.log(reverseWords("a good   example"));
+import { isStraight } from "../src/Sword/61.扑克牌中的顺子";
+console.log(isStraight([0, 4, 9, 9, 10]));
