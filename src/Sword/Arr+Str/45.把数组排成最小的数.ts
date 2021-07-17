@@ -4,9 +4,9 @@
  * 输出: "102"
  */
 
-export function minNumber(nums: (number|string)[]): string {
+export function minNumber(nums: (number | string)[]): string {
   // nums = nums.map(item => item.toString()).sort((a,b)=> +(a+b) - +(b+a))
-  
+
   // return nums.join("")
-  return nums.sort((a,b)=> +(""+a+b) - +(""+b+a)).join("")
-};
+  return nums.sort((a, b) => +("" + a + b) - +("" + b + a)).join("");
+}

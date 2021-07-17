@@ -7,15 +7,15 @@
 // 遍历字符串，遇到空格则换位 %20
 
 export function replaceSpace(s: string): string {
-  let x = s.split("")
-  let y = []
-  for(let a = 0; a<x.length; a++) {
-    if(x[a] !== " ") {
-      y.push(x[a])
+  let x = s.split("");
+  let y = [];
+  for (let a = 0; a < x.length; a++) {
+    if (x[a] !== " ") {
+      y.push(x[a]);
     } else {
-      y.push("%20")
+      y.push("%20");
     }
   }
 
-  return y.join("")
-};
+  return y.join("");
+}

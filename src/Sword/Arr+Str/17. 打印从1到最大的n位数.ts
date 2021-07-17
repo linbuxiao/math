@@ -3,24 +3,24 @@
  */
 
 export function printNumbers(n: number): number[] {
-  let a:number[] = []
-  for(let b = 0; b<=n; b++) {
-    a.push(9)
+  let a: number[] = [];
+  for (let b = 0; b <= n; b++) {
+    a.push(9);
   }
-  let b = +(a.join(""))
-  let c = []
-  for(let d = 1; d <= b; d++) {
-    c.push(d)
+  let b = +a.join("");
+  let c = [];
+  for (let d = 1; d <= b; d++) {
+    c.push(d);
   }
-  
-  return c
-};
+
+  return c;
+}
 
 // 也可以用Math.pow去解
 export function printNumbers_1(n: number): number[] {
-  let res = []
-  for(let i = 1; i < Math.pow(10, n); i++) {
-    res.push(i)
+  let res = [];
+  for (let i = 1; i < Math.pow(10, n); i++) {
+    res.push(i);
   }
-  return res
-};
+  return res;
+}

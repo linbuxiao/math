@@ -12,23 +12,26 @@
 
 // 给定 target = 20，返回 false。
 
-export function findNumberIn2DArray(matrix: number[][], target: number): boolean {
-  if(matrix.length === 0) {
-    return false
+export function findNumberIn2DArray(
+  matrix: number[][],
+  target: number
+): boolean {
+  if (matrix.length === 0) {
+    return false;
   }
-  
-  let x = 0
-  let y = matrix.length - 1
 
-  while(x < matrix[0].length && y>= 0) {
-    if(matrix[y][x] > target) {
-      y--
-    } else if(matrix[y][x] < target) {
-      x++
+  let x = 0;
+  let y = matrix.length - 1;
+
+  while (x < matrix[0].length && y >= 0) {
+    if (matrix[y][x] > target) {
+      y--;
+    } else if (matrix[y][x] < target) {
+      x++;
     } else {
-      return true
+      return true;
     }
   }
 
-  return false
-};
+  return false;
+}
