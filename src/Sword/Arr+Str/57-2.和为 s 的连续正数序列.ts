@@ -6,20 +6,22 @@
  */
 
 export function findContinuousSequence(target: number): number[][] {
-  let res: number[][] = []
-  for(let x = 1; x<target; x++) {
-    let s = 0
-    for(let y = x; y<target; y++) {
-      s += y
-      if(s > target) {
-        break
+  let res: number[][] = [];
+  for (let x = 1; x < target; x++) {
+    let s = 0;
+    for (let y = x; y < target; y++) {
+      s += y;
+      if (s > target) {
+        break;
       }
-      if(s === target) {
-        let arr = Array.from({length: y - x + 1}).fill(x).map((_,i)=> x+i)
-        res.push(arr)
-        break
+      if (s === target) {
+        let arr = Array.from({ length: y - x + 1 })
+          .fill(x)
+          .map((_, i) => x + i);
+        res.push(arr);
+        break;
       }
     }
   }
-  return res
-};
+  return res;
+}

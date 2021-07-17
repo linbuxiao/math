@@ -5,15 +5,15 @@
  */
 
 export function reverseLeftWords(s: string, n: number): string {
-  let arr: string[] = s.split("")
-  while(n) {
-    arr.push(arr.shift()!)
-    n--
+  let arr: string[] = s.split("");
+  while (n) {
+    arr.push(arr.shift()!);
+    n--;
   }
-  return arr.join("")
-};
+  return arr.join("");
+}
 
 // substring解法
 export function reverseLeftWords_1(s: string, n: number): string {
-  return s.substring(n, s.length) + s.substring(0, n)
-};
+  return s.substring(n, s.length) + s.substring(0, n);
+}

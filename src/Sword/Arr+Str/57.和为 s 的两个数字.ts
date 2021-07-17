@@ -5,16 +5,16 @@
  */
 
 export function twoSum(nums: number[], target: number) {
-  let [left, right, middle]: number[] = [0, nums.length-1]
-  while(left < right) {
-    middle = Math.floor((left+right) /2)
-    if(nums[middle] < target) {
-      left = middle + 1
+  let [left, right, middle]: number[] = [0, nums.length - 1];
+  while (left < right) {
+    middle = Math.floor((left + right) / 2);
+    if (nums[middle] < target) {
+      left = middle + 1;
     } else {
-      right = middle - 1
+      right = middle - 1;
     }
   }
-  
+
   // for(let x = 0; x<=left; x++) {
   //   for(let y = x + 1; y<=left; y++) {
   //     if(nums[x] + nums[y] === target) {
@@ -22,14 +22,14 @@ export function twoSum(nums: number[], target: number) {
   //     }
   //   }
   // }
-  let [x,y] = [0, left]
-  while(nums[x]+nums[y] !== target) {
-    if(nums[x] + nums[y] > target) {
-      y--
+  let [x, y] = [0, left];
+  while (nums[x] + nums[y] !== target) {
+    if (nums[x] + nums[y] > target) {
+      y--;
     } else {
-      x++
+      x++;
     }
-  }  
+  }
 
-  return [nums[x], nums[y]]
-};
+  return [nums[x], nums[y]];
+}
