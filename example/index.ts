@@ -1,4 +1,5 @@
-import { maxSlidingWindow_1 } from "../src/Sword/Stac+Queue/59-1.滑动窗口的最大值";
 import { ArrTurnToList } from "../src/Utils";
+import { calc_1, isHappy } from "../src/HashMap/快乐数";
+import { twoSum } from "../src/HashMap/两数之和";
 
-console.log(maxSlidingWindow_1([7, 2, 4], 2));
+console.log(twoSum([3, 3], 6));
