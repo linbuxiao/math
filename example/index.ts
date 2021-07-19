@@ -1,5 +1,8 @@
-import { ArrTurnToList } from "../src/Utils";
-import { calc_1, isHappy } from "../src/HashMap/快乐数";
-import { twoSum } from "../src/HashMap/两数之和";
+import {groupStrings} from "../src/HashMap/移位字符串分组";
+import {lengthOfLongestSubstring} from "../src/HashMap/无重复字符的最长子串";
+import {TwoSum} from "../src/HashMap/两数之和 III - 数据结构设计";
+import {fourSumCount} from "../src/HashMap/四数相加 II";
 
-console.log(twoSum([3, 3], 6));
+fourSumCount([1,2],[-2,-1]
+  ,[-1,2]
+  ,[0,2])
