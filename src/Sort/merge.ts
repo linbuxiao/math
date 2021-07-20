@@ -70,7 +70,7 @@ export function reversePairs(nums: number[]): number {
 
     const copy = new Array(end - start + 1)
     const length = Math.floor((end - start) / 2)
-    const leftNumber: number = findInversePairNum(nums, start, start+length)  
+    const leftNumber: number = findInversePairNum(nums, start, start+length)
     const rightNumber: number = findInversePairNum(nums, start+length+1, end)
 
     let i = start + length

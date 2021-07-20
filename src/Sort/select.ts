@@ -41,7 +41,7 @@ export function select_2(nums: number[]) {
     if(minIndex === maxIndex) break
     swap(nums, x, minIndex)
     if(maxIndex === x){
-      maxIndex = minIndex   
+      maxIndex = minIndex
     }
     let lastIndex = nums.length - 1 - x
     swap(nums, lastIndex, maxIndex)

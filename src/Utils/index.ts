@@ -1,8 +1,8 @@
 /**
  * 替换数组中两个位置的元素
- * @param arr 
- * @param x 
- * @param y 
+ * @param arr
+ * @param x
+ * @param y
  */
 export function swap (arr: number[], x: number, y: number) {
   let temp = arr[x]
@@ -24,7 +24,7 @@ export class ListNode {
 
 /**
  * 数组转化为链表
- * @param nums 
+ * @param nums
  */
 export function ArrTurnToList(nums: number[]): ListNode | null {
   let head = new ListNode()
