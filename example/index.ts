@@ -1,3 +1,4 @@
-import { intersect } from "../src/HashMap/两个数组的交集2";
+import { ArrTurnToList } from "../src/Utils";
+import { mergeTwoLists } from "../src/Sword/List/25. 合并两个排序的链表";
 
-console.log(intersect([1, 2, 2, 1], [2, 2]));
+console.log(mergeTwoLists(ArrTurnToList([1, 2, 4]), ArrTurnToList([1, 3, 4])));
