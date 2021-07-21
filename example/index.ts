@@ -1,5 +1,3 @@
-import { ArrTurnToList } from "../src/Utils";
-import { calc_1, isHappy } from "../src/HashMap/快乐数";
-import { twoSum } from "../src/HashMap/两数之和";
+import { intersect } from "../src/HashMap/两个数组的交集2";
 
-console.log(twoSum([3, 3], 6));
+console.log(intersect([1, 2, 2, 1], [2, 2]));
