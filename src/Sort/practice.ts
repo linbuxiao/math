@@ -31,7 +31,7 @@ export function threeSum(nums: number[]) {
         l++
       }
 
-      if(temp === 0){            
+      if(temp === 0){
         
                                  
         arr.push([nums[p], nums[l], nums[r]])
@@ -81,7 +81,7 @@ function handleQuickSort(nums: number[], start: number, end: number): number | n
   if(left === right && nums[right] > p) right--
   [nums[start], nums[right]] = [nums[right], nums[start]]
   return right
-} 
+}
 
 // 2. 给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
 // 输入：nums = [-1,2,1,-4], target = 1
@@ -103,7 +103,7 @@ export function threeSumClosest(nums: number[], target: number): number {
 
   let result = res.reduce((a,b)=> {
     if(Math.abs(b - target) < Math.abs(a - target)) return b
-    return a 
+    return a
   })
   
   return result
