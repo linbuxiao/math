@@ -67,3 +67,8 @@ export class TreeNode {
     this.right = right === undefined ? null : right;
   }
 }
+
+/**
+ * 将数组转化为树
+ */
+const turnTreeToArray = (nums: number[]) => {};
