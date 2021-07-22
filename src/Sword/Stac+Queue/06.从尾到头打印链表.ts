@@ -11,7 +11,7 @@ export function reversePrint(head: ListNode | null): number[] {
   let cur = head;
   while (cur) {
     s.unshift(cur.val);
-    cur = cur?.next;
+    cur = cur.next;
   }
 
   return s;

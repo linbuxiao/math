@@ -12,12 +12,10 @@ export function mergeTwoLists_1(
 ): ListNode | null {
   if (!l1) return l2;
   if (!l2) return l1;
-  if (!l1 && !l2) return null;
 
   let p1: ListNode | null = l1;
   let p2: ListNode | null = l2;
   while (p1 && p2) {
-    let tempNext: ListNode | null = p1.next;
     p1.next = null; // 截断第一个节点
     while (p2.next) {
       if (p2.next.val < p1.val) {
@@ -28,7 +26,7 @@ export function mergeTwoLists_1(
         let next: any = p2.next;
         p2.next = p1;
         p1.next = next;
-        p2 = p2?.next;
+        p2 = p2.next;
         break;
       }
     }

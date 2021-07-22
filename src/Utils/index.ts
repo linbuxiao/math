@@ -71,4 +71,52 @@ export class TreeNode {
 /**
  * 将数组转化为树
  */
-const turnTreeToArray = (nums: number[]) => {};
+export const turnTreeToArray = (nums: (number|null)[]): TreeNode | null => {
+  if(nums.length === 0) return null
+  let matrix: (TreeNode | null )[][] = []
+  let p = 0 // 数组指针
+
+  const dfs = () => {
+    let row: (TreeNode | null )[] = []
+    if(matrix.length === 0) {
+      row.push(new TreeNode(nums[0]!))
+      p++
+    } else {
+      let len = matrix[matrix.length - 1].filter(item=> item !== null).length * 2 // 上一级的长度
+      while(len && p<nums.length) {
+        row.push(nums[p] === null ? null : new TreeNode(nums[p]!))
+        p++
+        len--
+      }
+    }
+
+    matrix.push(row)
+  }
+  // 构造矩阵
+  while(p<nums.length) {
+    dfs()
+  }
+  
+  // 解析矩阵为树
+  // let root = new TreeNode()
+  let k = 0 // 矩阵指针
+  // k指到的数组去结合下一层的数据
+  while(k < matrix.length - 1) {
+    let row = matrix[k]
+    let nexRow = matrix[k+1]
+    let f = 0 // 下一行指针
+    for(let i = 0; i<row.length; i++) {
+      if(row[i] === null) {
+        continue
+      } else {
+        row[i]!.left = nexRow[f]
+        f++
+        row[i]!.right = nexRow[f]
+        f++
+      }
+    }
+    k++
+  }
+  
+  return matrix[0][0]
+};

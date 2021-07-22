@@ -7,9 +7,7 @@
 export function spiralOrder(matrix: number[][]): number[] {
   let res: number[] = [];
   while (matrix.length) {
-    if (matrix.length) {
-      res = res.concat(matrix.shift()!);
-    }
+    res = res.concat(matrix.shift()!);
     for (let a = 0; a < matrix.length; a++) {
       if (matrix[a].length === 1) {
         res = res.concat(matrix.shift()!);
@@ -30,7 +28,6 @@ export function spiralOrder(matrix: number[][]): number[] {
 export function spiralOrder_1(matrix: number[][]): number[] {
   let result: number[] = [];
   while (matrix.length) {
-    result.concat(matrix.shift()!);
     matrix.map((row) => result.push(row.pop()!));
     matrix.reverse().map((row) => row.reverse());
   }

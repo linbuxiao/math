@@ -20,7 +20,7 @@ export class TwoSum_1 {
   }
 
   find(value: number): boolean {
-    if (!this.items.length && this.items.length === 1) return false;
+    if (!this.items.length || this.items.length === 1) return false;
 
     let flag = false;
     for (let i = 0; i < this.items.length; i++) {

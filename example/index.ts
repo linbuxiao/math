@@ -1,4 +1,6 @@
-import { ArrTurnToList } from "../src/Utils";
-import { mergeTwoLists } from "../src/Sword/List/25. 合并两个排序的链表";
+import { maxDepth } from "../src/Tree/最大深度";
+import { turnTreeToArray } from "../src/Utils";
 
-console.log(mergeTwoLists(ArrTurnToList([1, 2, 4]), ArrTurnToList([1, 3, 4])));
+
+console.log(maxDepth(turnTreeToArray([1,2,3,4,5])));
+

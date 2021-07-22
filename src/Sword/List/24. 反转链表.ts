@@ -9,7 +9,7 @@ import { ListNode } from "../../Utils";
 export function reverseList_1(head: ListNode | null): ListNode | null {
   if (!head) return head;
   let cur = head;
-  let prev = head;
+  let prev: ListNode;
   let arr = [];
   while (cur) {
     prev = cur;
