@@ -23,7 +23,7 @@ export function levelOrder_1(root: TreeNode | null): number[][] {
       
       matrix.push(row)
     }
-  } 
+  }
 
   let res:number[][] = []
   for(let i = 0; i<matrix.length - 1; i++) {
@@ -56,7 +56,7 @@ export function levelOrder(root: TreeNode | null): number[][] {
       row.push(head.val)
       if(head.left) {
         temQueue.push(head.left)
-      } 
+      }
 
       if(head.right) {
         temQueue.push(head.right)
