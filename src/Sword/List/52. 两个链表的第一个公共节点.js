@@ -18,7 +18,7 @@
  * @param {ListNode} headB
  * @return {ListNode}
  */
-const getIntersectionNode = function(headA, headB) {
+export const getIntersectionNode = function(headA, headB) {
   // 1. 相交的不能是索引0
   // 2. 不能改变原链表
   // 3. 返回的应该是一个引用
