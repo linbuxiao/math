@@ -7,15 +7,15 @@ export function permute(nums: number[]): number[][] {
   const result: number[][] = []
 
   const backTracking = (chessNums: number[]) => {
-    if(chessNums.length === nums.length) {      
-      result.push([...chessNums]) 
+    if(chessNums.length === nums.length) {
+      result.push([...chessNums])
       return
-    } 
+    }
     for(let i = 0; i<nums.length; i++) {
       if(chessNums.indexOf(nums[i]) === -1) {
         chessNums.push(nums[i])
         backTracking(chessNums)
-        chessNums.pop()   
+        chessNums.pop()
       }
 
     }

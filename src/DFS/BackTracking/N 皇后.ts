@@ -25,7 +25,7 @@ export function solveNQueens_1(n: number): string[][] {
         if(item[0] === x || item[1] === y) {
           
           if(index !== i) return true
-        } 
+        }
 
         while(x>= 0 && y >= 0) {
           x--
@@ -72,7 +72,7 @@ export function solveNQueens_1(n: number): string[][] {
             let temp = board[x].concat([[i, j]])
             if(isVaild(temp)) {
               res.push(temp)
-            } 
+            }
           }
         }
         
@@ -115,7 +115,7 @@ export function solveNQueens_1(n: number): string[][] {
   allBoard.forEach(item => {
     
       res.push(buildStrBoard(item))
-  })  
+  })
   
   return res
 };
