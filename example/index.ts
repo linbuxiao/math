@@ -1,5 +1,5 @@
-import { recoverFromPreorder } from "../src/DFS/从先序遍历还原二叉树";
-import { postorderTraversal } from "../src/DFS/迭代遍历";
+import { permute } from "../src/DFS/BackTracking/全排列";
+import { solveSudoku } from "../src/DFS/BackTracking/数独";
 import { turnTreeToArray } from "../src/Utils";
 
-console.log(postorderTraversal(turnTreeToArray([1, null, 2, 3])));
+solveSudoku([["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]])
