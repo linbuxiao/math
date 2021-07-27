@@ -54,6 +54,6 @@ export function letterCasePermutation(s: string): string[] {
       }
   }
 
-  backTracking(s.split(""), 0)  
+  backTracking(s.split(""), 0)
   return result
 };
