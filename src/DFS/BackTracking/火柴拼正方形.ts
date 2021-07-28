@@ -7,46 +7,40 @@
  */
 
 export function makesquare(matchsticks: number[]): boolean {
-  matchsticks.sort((a,b)=> b-a)
-  const sum = matchsticks.reduce((a,b)=> a+b, 0)
-  if(sum % 4 !== 0) return false // 如果总和不能被4除尽，则一定组不成正方形
-  if(matchsticks.length < 4) return false
+  matchsticks.sort((a, b) => b - a);
+  const sum = matchsticks.reduce((a, b) => a + b, 0);
+  if (sum % 4 !== 0) return false; // 如果总和不能被4除尽，则一定组不成正方形
+  if (matchsticks.length < 4) return false;
 
-  const sideLen = sum / 4
-  
+  const sideLen = sum / 4;
 
-  const sideArr: number[] = new Array(4).fill(0)
-  
+  const sideArr: number[] = new Array(4).fill(0);
 
   const backTracking = (index: number) => {
-    if(index === matchsticks.length) {
+    if (index === matchsticks.length) {
       return (
         sideArr[0] === sideArr[1] &&
         sideArr[1] === sideArr[2] &&
         sideArr[2] === sideArr[3]
-      )
+      );
     }
 
-    const current = matchsticks[index]
+    const current = matchsticks[index];
 
-    if(current > sideLen) {
-      return false
+    if (current > sideLen) {
+      return false;
     }
 
-
-    for(let i = 0; i<sideArr.length; i++) {
-      if(sideArr[i] + current <= sideLen) {
-        sideArr[i] += current
-        if(backTracking(index + 1)) return true
-        sideArr[i] -= current
+    for (let i = 0; i < sideArr.length; i++) {
+      if (sideArr[i] + current <= sideLen) {
+        sideArr[i] += current;
+        if (backTracking(index + 1)) return true;
+        sideArr[i] -= current;
       }
     }
 
-    return false
-  }
+    return false;
+  };
 
-
-  return backTracking(0)
-};
-
-
+  return backTracking(0);
+}

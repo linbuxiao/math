@@ -1,9 +1,15 @@
-import { subsets } from "../src/DFS/BackTracking/子集 II";
-import { subsetsWithDup } from "../src/DFS/BackTracking/子集 III";
-import { maxUniqueSplit } from "../src/DFS/BackTracking/拆分字符串使唯一子字符串的数目最大";
+import { pacificAtlantic } from "../src/DFS/FloodFill/太平洋大西洋水流问题";
+import { numIslands } from "../src/DFS/FloodFill/岛屿数量";
 
+const params = [
+  [1,2,2,3,5],
+  [3,2,3,4,4],
+  [2,4,5,3,1],
+  [6,7,1,4,5],
+  [5,1,1,2,4]
+]
 
 console.log(
-  maxUniqueSplit("ababccc")
+  pacificAtlantic(params)
 );
 

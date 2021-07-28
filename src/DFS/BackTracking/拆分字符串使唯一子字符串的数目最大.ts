@@ -5,38 +5,29 @@
  */
 
 export function maxUniqueSplit(s: string): number {
-  if(s.length === 1) return 1
-  const nums: number[] = []
-  const path = new Set<string>()
+  if (s.length === 1) return 1;
+  const path = new Set<string>();
+  let max = 0
 
-  const dfs = (str: string[]) => {
-    if(str.length === 0) {
-      console.log(path);
-      
-      nums.push(path.size)
-      return
+  const dfs = (str: string) => {
+    if (str.length === 0) {  
+      max = path.size > max ? path.size : max    
+      return;
     }
 
-    for(let i = 0; i<str.length; i++) {
-      let cur = ""
-      for(let x = 0; x<i; x++ ){
-        cur += str.pop()!
-      }
-      
-      if(path.has(cur)) {
-        continue
+    for (let i = 1; i < str.length + 1; i++) {      
+      let cur = str.substring(0, i)
+      if (path.has(cur)) {
+        continue;
       } else {
-        path.add(cur)
-        dfs(str)
-        path.delete(cur)
-      }
-      for(let x = 0; x<cur.length; x++) {
-        str.push(cur[x])
+        path.add(cur);
+        dfs(str.substring(i,str.length));
+        path.delete(cur);
       }
     }
-  }
+  };
 
-  dfs(s.split(""))
+  dfs(s);
   
-  return Math.max(...nums)
-};
+  return max
+}
