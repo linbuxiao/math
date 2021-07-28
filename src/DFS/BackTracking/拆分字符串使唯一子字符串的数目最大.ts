@@ -10,12 +10,12 @@ export function maxUniqueSplit(s: string): number {
   let max = 0
 
   const dfs = (str: string) => {
-    if (str.length === 0) {  
-      max = path.size > max ? path.size : max    
+    if (str.length === 0) {
+      max = path.size > max ? path.size : max
       return;
     }
 
-    for (let i = 1; i < str.length + 1; i++) {      
+    for (let i = 1; i < str.length + 1; i++) {
       let cur = str.substring(0, i)
       if (path.has(cur)) {
         continue;
