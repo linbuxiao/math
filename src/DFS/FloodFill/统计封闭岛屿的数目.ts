@@ -40,7 +40,7 @@ export function closedIsland(grid: number[][]): number {
     if (row < grid.length - 1 && grid[row + 1][col] === 0) {
       if (!used[row + 1][col]) {
         // if(dfs(row + 1, col)) return true
-        dfs(row + 1, col);
+          dfs(row + 1, col);
       }
     }
 
