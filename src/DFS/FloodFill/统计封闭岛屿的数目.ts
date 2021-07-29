@@ -13,7 +13,7 @@ export function closedIsland(grid: number[][]): number {
     let r = []
     for(let x = 0; x<grid[0].length; x++) {
       r.push(false)
-    } 
+    }
     used.push(r)
   }
 
