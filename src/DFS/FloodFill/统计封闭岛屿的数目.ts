@@ -5,71 +5,97 @@
  * 请返回封闭岛屿的数目。
  */
 
-export function closedIsland(grid: number[][]): number {
-  let num = 0
-  const used: boolean[][] = []
-  const path = []
-  for(let y = 0; y<grid.length; y++) {
-    let r = []
-    for(let x = 0; x<grid[0].length; x++) {
-      r.push(false)
+// 双重遍历暴力法
+export function closedIsland_1(grid: number[][]): number {
+  let num = 0;
+  const used: number[][] = Array.from({ length: grid.length }, () =>
+    new Array(grid[0].length).fill(0)
+  );
+
+  // 是孤岛 / 不是孤岛
+  const dfs = (row: number, col: number, chess: number[][]) => {
+    if (chess[row][col]) return true;
+    // 如果遇到了1, 证明前一个引用这个方块的是正确的
+    if (grid[row][col] === 1) return true;
+    // 当触及到边界，并且为0的时候，返回false
+    used[row][col] = 1;
+    chess[row][col] = 1;
+    if (
+      row === 0 ||
+      col === 0 ||
+      row === grid.length - 1 ||
+      col === grid[0].length - 1
+    )
+      return false;
+
+    // 如果遇到了0，就要看这个0是否是正确的，继续遍历四周
+
+    if (
+      dfs(row - 1, col, chess) &&
+      dfs(row + 1, col, chess) &&
+      dfs(row, col + 1, chess) &&
+      dfs(row, col - 1, chess)
+    ) {
+      return true;
     }
-    used.push(r)
-  }
+    return false;
+  };
 
-  
-
-  const dfs = (row: number, col: number) => {
-    used[row][col] = true
-    if(row === 0 || row === grid.length - 1 || col === 0 || col === grid[0].length - 1) {
-      console.log(row, col);
-      
-      return false
-    }
-
-    if(row > 0 && grid[row - 1][col] === 0) {
-      if(!used[row - 1][col]) {
-        // if(dfs(row - 1, col)) return true
-        dfs(row - 1, col)
-      }
-    }
-
-    if(row < grid.length - 1 && grid[row + 1][col] === 0) {
-      if(!used[row + 1][col]) {
-        // if(dfs(row + 1, col)) return true
-        dfs(row + 1, col)
-      }
-    }
-
-    if(col > 0 && grid[row][col - 1] === 0) {
-      if(!used[row][col - 1]) {
-        // if(dfs(row, col -1)) return true
-        dfs(row, col -1)
-      }
-    }
-
-    if(col < grid[0].length - 1 && grid[row][col + 1] === 0) {
-      if(!used[row][col + 1]) {
-        // if(dfs(row, col + 1)) return true
-        dfs(row, col + 1)
-      }
-    }
-    
-    return true
-  }
-
-  // 无需遍历最外层
-  for(let y = 1; y<grid.length - 1; y++) {
-    for(let x = 1; x<grid[0].length - 1; x++) {
-      if(!used[y][x] && grid[y][x] === 0) {
-        if(dfs(y, x)) {
-          path.push([y,x])
-          num++
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[0].length; col++) {
+      if (grid[row][col] === 0 && !used[row][col]) {
+        const chess: number[][] = Array.from({ length: grid.length }, () =>
+          new Array(grid[0].length).fill(0)
+        );
+        if (dfs(row, col, chess)) {
+          num++;
         }
       }
     }
   }
-  console.log(path);
-  
-  return num
-};
+
+  return num;
+}
+
+export function closedIsland(grid: number[][]): number {
+  let num = 0;
+  const used = Array.from({ length: grid.length }, () =>
+    new Array(grid[0].length).fill(0)
+  );
+
+  const dfs = (row: number, col: number) => {
+    if (row < 0 || col < 0 || row > grid.length - 1 || col > grid[0].length - 1)
+      return;
+
+    if (used[row][col]) return;
+    if (grid[row][col]) return;
+
+    used[row][col] = 1;
+
+    dfs(row - 1, col);
+    dfs(row + 1, col);
+    dfs(row, col + 1);
+    dfs(row, col - 1);
+  };
+
+  for (let y = 0; y < grid.length; y++) {
+    if (grid[y][0] === 0) dfs(y, 0);
+    if (grid[y][grid[0].length - 1] === 0) dfs(y, grid[0].length - 1);
+  }
+
+  for (let x = 0; x < grid[0].length; x++) {
+    if (grid[0][x] === 0) dfs(0, x);
+    if (grid[grid.length - 1][x] === 0) dfs(grid.length - 1, x);
+  }
+
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[0].length; col++) {
+      if (!grid[row][col] && !used[row][col]) {
+        dfs(row, col);
+        num++;
+      }
+    }
+  }
+
+  return num;
+}
