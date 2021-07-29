@@ -80,7 +80,7 @@ export function pacificAtlantic(heights: number[][]): number[][] {
       
     }
 
-    if(col > 0 && heights[row][col - 1] <= val) { 
+    if(col > 0 && heights[row][col - 1] <= val) {
       if(!used[row][col - 1]) {
         used[row][col - 1] = true
         if(dfs(row, col - 1, used)) return true
@@ -106,7 +106,7 @@ export function pacificAtlantic(heights: number[][]): number[][] {
       used[row][col] = true
       if(dfs(row, col, used)) {
         result.push([row, col])
-      } 
+      }
 
     }
   }
