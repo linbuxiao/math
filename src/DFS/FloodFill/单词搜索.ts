@@ -7,7 +7,7 @@
 // 最大问题，不能回头
 
 export function exist(board: string[][], word: string): boolean {
-  const dfs = (row: number, col: number, k: number, used: boolean[][]): boolean => {  
+  const dfs = (row: number, col: number, k: number, used: boolean[][]): boolean => {
     // 当前项的位置
     if(k === word.length) return true // 当按规则处理到最后一项后
     
@@ -41,7 +41,7 @@ export function exist(board: string[][], word: string): boolean {
     if(col >= 1 && board[row][col - 1] === word[k]) {
       console.log("left", row, col);
       
-      if(!used[row][col - 1]) {     
+      if(!used[row][col - 1]) {
         used[row][col - 1] = true
         if(dfs(row, col - 1, k + 1, used)) return true
         used[row][col - 1] = false

@@ -40,7 +40,7 @@ export function numIslands(grid: string[][]): number {
         used[row][col + 1] = true
         path.push([row, col + 1])
         dfs(row, col + 1, path)
-      }      
+      }
     }
   }
 

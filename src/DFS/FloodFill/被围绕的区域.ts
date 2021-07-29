@@ -38,7 +38,7 @@ export function solve(board: string[][]): void {
       if(!used[row][col + 1]) {
         used[row][col + 1] = true
         dfs(row, col + 1)
-      }      
+      }
     }
   }
 
