@@ -5,10 +5,6 @@
 import { TreeNode } from "../Utils";
 
 export function invertTree(root: TreeNode | null): TreeNode | null {
-  // const swap = (root: TreeNode | null) : TreeNode | null => {
-
-  // }
-
   if (root === null) return null;
   if (root.left === null && root.right === null) return root;
   let temp = root.left;
