@@ -71,7 +71,7 @@ export class TreeNode {
 /**
  * 将数组转化为树
  */
-export const turnTreeToArray = (nums: (number | null)[]): TreeNode | null => {
+export const turnArrayToTree = (nums: (number | null)[]): TreeNode | null => {
   if (nums.length === 0) return null;
   let matrix: (TreeNode | null)[][] = [];
   let p = 0; // 数组指针

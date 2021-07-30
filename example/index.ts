@@ -1,4 +1,5 @@
 import { maxPathSum } from "../src/DFS/DP/二叉树中的最大路径和";
-import { turnTreeToArray } from "../src/Utils";
+import { longestConsecutive } from "../src/DFS/DP/二叉树最长连续序列";
+import { turnArrayToTree } from "../src/Utils";
 
-maxPathSum(turnTreeToArray([-3]));
+longestConsecutive(turnArrayToTree([2, null, 3, 2, null, 1]));

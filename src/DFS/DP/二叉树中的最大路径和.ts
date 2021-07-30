@@ -18,8 +18,14 @@ export function maxPathSum(root: TreeNode | null): number {
     let left = dfs(root.left);
     let right = dfs(root.right);
 
-    res = Math.max(res, left + right + root.val);
-    return Math.max(left, right) + root.val;
+    res = Math.max(
+      res,
+      left + right + root.val,
+      left + root.val,
+      right + root.val,
+      root.val
+    );
+    return Math.max(left, right, 0) + root.val;
   };
 
   dfs(root);
