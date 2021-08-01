@@ -22,7 +22,7 @@ export function longestUnivaluePath(root: TreeNode | null): number {
 
     if (root.left !== null && root.right !== null) {
       if (root.right.val === root.val && root.left.val === root.val) {
-        num = Math.max(num, left + right - 1);
+        max = Math.max(left + right + 1, max);
       }
     }
 
