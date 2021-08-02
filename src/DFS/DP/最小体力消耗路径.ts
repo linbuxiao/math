@@ -5,3 +5,61 @@
 
  * 请你返回从左上角走到右下角的最小 体力消耗值 。
  */
+
+export function minimumEffortPath(heights: number[][]): number {
+  const [m, n] = [heights.length, heights[0].length];
+  // if(m === n && m === 1) return 0
+  // const dp = new Array(m)
+  const INF = Number.MAX_SAFE_INTEGER;
+
+  const dfs = (
+    row: number,
+    col: number,
+    abs: number,
+    used: boolean[][]
+  ): number => {
+    if (row === m - 1 && col === n - 1) {
+      console.log(abs, used);
+    }
+
+    if (row > m - 1 || col > n - 1 || row < 0 || col < 0 || used[row][col])
+      return INF;
+    if (row === m - 1 && col === n - 1) return abs;
+
+    used[row][col] = true;
+    let l = INF;
+    let r = INF;
+    let u = INF;
+    let d = INF;
+    if (row < m - 1) {
+      r = Math.abs(heights[row + 1][col] - heights[row][col]);
+    }
+    if (col < n - 1) {
+      d = Math.abs(heights[row][col + 1] - heights[row][col]);
+    }
+    if (row > 0) {
+      u = Math.abs(heights[row - 1][col] - heights[row][col]);
+    }
+    if (col > 0) {
+      l = Math.abs(heights[row][col - 1] - heights[row][col]);
+    }
+
+    const min = Math.min(r, d, u, l);
+    const max = Math.max(abs, min);
+
+    const up = dfs(row - 1, col, max, [...used]);
+    const down = dfs(row + 1, col, max, [...used]);
+    const left = dfs(row, col - 1, max, [...used]);
+    const right = dfs(row, col + 1, max, [...used]);
+    return Math.min(up, down, left, right);
+  };
+
+  const res = dfs(
+    0,
+    0,
+    0,
+    Array.from({ length: m }, () => new Array(n).fill(false))
+  );
+
+  return res;
+}
