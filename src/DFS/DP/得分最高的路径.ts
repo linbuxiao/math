@@ -16,7 +16,8 @@
 
 // 杀
 
-export function pathsWithMaxScore(board: string[]): number[] {
+// 递归法 在遇到超长示例时会超时
+export function pathsWithMaxScore_1(board: string[]): number[] {
   const len = board.length;
   const INF = Number.MIN_SAFE_INTEGER;
   const used: boolean[][] = Array.from({ length: len }, () =>
@@ -55,4 +56,62 @@ export function pathsWithMaxScore(board: string[]): number[] {
   const res = dfs(0, 0);
 
   return res[0] === INF ? [0, 0] : res;
+}
+
+export function pathsWithMaxScore(board: string[]): number[] {
+  // 将每一个节点的最大值和可能出现的情况进行计算
+  // 只计算三个方向的值，不进行递归收集
+  const INF = Number.MIN_SAFE_INTEGER;
+  const mod = 10 ** 9 + 7;
+  const length = board.length;
+  const wallX = length + 2;
+  const wallY = length + 2;
+  let dp = new Array(wallY);
+
+  for (let row = 0; row < wallY; row++) {
+    dp[row] = new Array(wallX);
+    for (let col = 0; col < wallX; col++) {
+      if (row > 0 && col > 0 && row < length + 1 && col < length + 1) {
+        let char = board[row - 1][col - 1];
+        switch (char) {
+          case "X":
+            dp[row][col] = [INF, 0];
+            break;
+          case "S":
+          case "E":
+            dp[row][col] = [0, 0];
+            break;
+          default:
+            dp[row][col] = [+char, 0];
+        }
+      } else {
+        dp[row][col] = [INF, 0];
+      }
+    }
+  }
+
+  dp[length + 1][length + 1] = [0, 1];
+
+  for (let row = length; row >= 1; row--) {
+    for (let col = length; col >= 1; col--) {
+      let max = Math.max(
+        dp[row][col + 1][0],
+        dp[row + 1][col][0],
+        dp[row + 1][col + 1][0]
+      );
+      if (max === dp[row][col + 1][0])
+        dp[row][col][1] += dp[row][col + 1][1] % mod;
+      if (max === dp[row + 1][col][0])
+        dp[row][col][1] += dp[row + 1][col][1] % mod;
+      if (max === dp[row + 1][col + 1][0])
+        dp[row][col][1] += dp[row + 1][col + 1][1] % mod;
+      dp[row][col][0] += max;
+    }
+  }
+
+  if (dp[1][1][0] < 0) {
+    return [0, 0];
+  }
+
+  return dp[1][1];
 }
