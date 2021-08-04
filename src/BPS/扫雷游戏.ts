@@ -27,8 +27,25 @@
 
 export function updateBoard(board: string[][], click: number[]): string[][] {
   const [m, n] = [board.length, board[0].length];
-  const direct_x = [0, 0, 1, -1, 1, -1];
-  const direct_y = [1, -1, 0, 0, -1, 1];
+  const direct_x = [0, 0, 1, -1, 1, -1, 1, -1];
+  const direct_y = [1, -1, 0, 0, -1, 1, 1, -1];
+
+  const valid = (row: number, col: number): boolean => {
+    if (row < 0 || col < 0 || row > m - 1 || col > n - 1) return false;
+    return true;
+  };
+
+  const boom = (row: number, col: number): number => {
+    let num = 0;
+    for (let k in direct_x) {
+      const [nr, nc] = [row + direct_x[k], col + direct_y[k]];
+      if (valid(nr, nc)) {
+        if (board[nr][nc] === "M") num++;
+      }
+    }
+    return num;
+  };
+
   switch (board[click[0]][click[1]]) {
     case "M": {
       // 挖到地雷
@@ -38,7 +55,6 @@ export function updateBoard(board: string[][], click: number[]): string[][] {
     case "E": {
       const queue = [click];
       let cur: number[][] = [];
-      const booms = [];
       const update = () => {
         if (queue.length === 0) {
           queue.push(...cur);
@@ -47,33 +63,25 @@ export function updateBoard(board: string[][], click: number[]): string[][] {
       };
       while (queue.length) {
         const [i, j] = queue.pop()!;
-
-        if (board[i][j] === "M") {
-          booms.push([i, j]);
+        if (!valid(i, j) || board[i][j] === "M") {
+          update();
           continue;
         }
 
         if (board[i][j] === "E") {
-          const tmp = [];
-          let flag = false;
-          for (let k in direct_x) {
-            const [nr, nc] = [i + direct_x[k], j + direct_y[k]];
-            if (nr >= 0 && nc >= 0 && nr < m && nc < n && board[i][j] !== "B") {
-              if (board[nr][nc] === "M") {
-                booms.push([i, j]);
-                flag = true;
-                break;
-              }
-              board[i][j] = "B";
-              tmp.push([i + direct_x[k], j + direct_y[k]]);
+          // 先判断周围有没有雷
+          const num = boom(i, j);
+          if (num === 0) {
+            for (let k in direct_x) {
+              cur.push([i + direct_x[k], j + direct_y[k]]);
             }
+            board[i][j] = "B";
+          } else {
+            board[i][j] = `${num}`;
           }
-          !flag && cur.push(...tmp);
         }
         update();
       }
-
-      console.log(board);
     }
     default: {
       // do nothing
