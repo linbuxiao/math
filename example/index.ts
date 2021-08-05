@@ -1,12 +1,4 @@
-import { colorBorder } from "../src/BPS/边框着色";
+import { numSquares } from "../src/BPS/完全平方数";
+import { generateParenthesis } from "../src/BPS/括号生成";
 
-colorBorder(
-  [
-    [1, 1, 1],
-    [1, 1, 1],
-    [1, 1, 1],
-  ],
-  0,
-  1,
-  2
-);
+console.log(generateParenthesis(3));
