@@ -1,4 +1,3 @@
-import { numSquares } from "../src/BPS/完全平方数";
-import { generateParenthesis } from "../src/BPS/括号生成";
-
-console.log(generateParenthesis(3));
+import { canMeasureWater } from "../src/BPS/水壶问题";
+// 22003,31237,1
+console.log(canMeasureWater(3, 5, 4));
