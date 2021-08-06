@@ -1,3 +1,3 @@
-import { canMeasureWater } from "../src/BPS/水壶问题";
-// 22003,31237,1
-console.log(canMeasureWater(3, 5, 4));
+import { alienOrder } from "../src/BPS/Topo/火星词典";
+
+console.log(alienOrder(["abc", "ab"]));
