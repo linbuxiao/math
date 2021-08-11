@@ -1,3 +1,11 @@
-import { tribonacci } from "../src/Day/August/第 N 个泰波那契数";
+import { treeDiameter } from "../src/BPS/Topo/树的直径";
 
-tribonacci(37);
+console.log(
+  treeDiameter([
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [1, 4],
+    [4, 5],
+  ])
+);
