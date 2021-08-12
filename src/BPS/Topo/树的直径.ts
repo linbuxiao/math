@@ -14,9 +14,10 @@
 // 解释：
 // 这棵树上最长的路径是 3 - 2 - 1 - 4 - 5，边数为 4。
 
-export function treeDiameter(edges: number[][]): number {
+// DFS解法，超时警告
+export function treeDiameter_1(edges: number[][]): number {
   const map = new Map<number, Set<number>>();
-  let num = 1;
+  let num = Number.MIN_SAFE_INTEGER;
   for (let [X, Y] of edges) {
     !map.has(X) && map.set(X, new Set());
     !map.has(Y) && map.set(Y, new Set());
@@ -25,26 +26,77 @@ export function treeDiameter(edges: number[][]): number {
     map.set(Y, map.get(Y)!.add(X));
   }
 
-  while (map.size > 1) {
-    let wait: number[] = [];
-    map.forEach((set, key) => {
-      if (set.size === 1) {
-        wait.push(key);
+  const dfs = (s: number, set: Set<number>, value: number) => {
+    const k = map.get(s)!;
+    let flag = false;
+    k.forEach((item) => {
+      if (!set.has(item)) {
+        flag = true;
+        const nextSet = new Set(set);
+        nextSet.add(item);
+        dfs(item, nextSet, value + 1);
       }
     });
 
-    wait.forEach((item) => {
-      map.delete(item);
+    if (flag) {
+      num = Math.max(num, value);
+      return;
+    }
+  };
 
-      map.forEach((set) => {
-        if (set.has(item)) {
-          set.delete(item);
-        }
-      });
-    });
-
-    num++;
-  }
+  map.forEach((_, key) => {
+    dfs(key, new Set(), 0);
+  });
 
   return num;
 }
+
+export function treeDiameter(edges: number[][]): number {
+  const map = new Map<number, Set<number>>();
+  let num = 0;
+  for (let [X, Y] of edges) {
+    !map.has(X) && map.set(X, new Set());
+    !map.has(Y) && map.set(Y, new Set());
+
+    map.set(X, map.get(X)!.add(Y));
+    map.set(Y, map.get(Y)!.add(X));
+  }
+
+  let queue: number[] = [];
+
+  map.forEach((item, key) => {
+    if (item.size === 1) queue.push(key);
+  });
+
+  while (queue.length) {
+    num++;
+    let tmp: number[] = [];
+    for (let k of queue) {
+      map.delete(k);
+    }
+
+    map.forEach((set) => {
+      for (let k of queue) {
+        if (set.has(k)) set.delete(k);
+      }
+    });
+
+    if (map.size === 1 || map.size === 2) break;
+
+    map.forEach((set, k) => {
+      if (set.size === 1) tmp.push(k);
+    });
+
+    queue = [...tmp];
+  }
+
+  if (map.size === 1) {
+    return num * 2;
+  } else {
+    return num * 2 + 1;
+  }
+}
+
+// [[0,1], [1,2], [2,3], [1,4], [4,5]]
+// [[0,1],[0,2]]
+// [[0,1],[1,2],[2,3],[1,4],[4,5]]
