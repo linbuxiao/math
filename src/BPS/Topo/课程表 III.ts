@@ -82,7 +82,8 @@ export function scheduleCourse_2(courses: number[][]): number {
 
 //优先队列
 
-// 先学习结束早的，之后如果超时，就替换掉之前耗时最长的课
+// 先学习结束早的，之后如果不超时，则替换掉之前最耗时的课
+// todo
 export function scheduleCourse(courses: number[][]): number {
   courses.sort((a, b) => a[1] - b[1]);
 
@@ -90,8 +91,24 @@ export function scheduleCourse(courses: number[][]): number {
   let count = 0;
 
   for (let i = 0; i < courses.length; i++) {
-    if (count + courses[i][0] <= courses[i][i]) {
-      queue.push(i);
+    const value = courses[i][0];
+    if (count + value <= courses[i][1]) {
+      queue.push(value);
+      queue.sort((a, b) => a - b); // 始终保持耗时队列为从小到大
+      count += value;
+      continue;
+    }
+
+    // 如果超时了，则取出最大的一个进行替换
+
+    if (queue[queue.length - 1] >= value) {
+      count -= queue.pop()!;
+      count += value;
+      queue.push(value);
+      queue.sort((a, b) => a - b);
+      continue;
     }
   }
+
+  return queue.length;
 }

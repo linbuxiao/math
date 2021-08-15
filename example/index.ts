@@ -1,8 +1,8 @@
-import { scheduleCourse } from "../src/BPS/Topo/课程表 III";
-
+import { orangesRotting } from "../src/BPS/TwoWay/腐烂的橘子";
 console.log(
-  scheduleCourse([
-    [1, 2],
-    [2, 3],
+  orangesRotting([
+    [2, 1, 1],
+    [1, 1, 0],
+    [0, 1, 1],
   ])
 );
