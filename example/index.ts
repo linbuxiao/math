@@ -1,3 +1,2 @@
-import { countArrangement } from "../src/Day/August/优美的排列";
-
-console.log(countArrangement(2));
+import { checkRecord } from "../src/Day/August/学生出勤记录 I";
+console.log(checkRecord("LPLPLPLPLPL"));
