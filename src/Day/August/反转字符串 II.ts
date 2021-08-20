@@ -15,6 +15,7 @@
 export function reverseStr(s: string, k: number): string {
   const len = s.length;
   const arr = s.split("");
+  const step = 2 * k;
   const swap = (l: number, r: number) => {
     while (l < r) {
       let tmp = arr[l];
@@ -24,21 +25,21 @@ export function reverseStr(s: string, k: number): string {
       r--;
     }
   };
-  for (let i = 0; i < len; i += 2 * k - 1) {
-    let start = i - 2 * k + 1;
+
+  for (let i = -1; i < len; i += step) {
+    let start = i - step + 1;
     let end = i - k;
+
     swap(start, end);
 
     const restLen = len - i - 1;
-
-    console.log(restLen);
 
     if (restLen < k) {
       swap(i + 1, len - 1);
       break;
     }
-    if (restLen < 2 * k) {
-      swap(i + 1, i + k - 1);
+    if (restLen < step) {
+      swap(i + 1, i + k);
       break;
     }
   }
