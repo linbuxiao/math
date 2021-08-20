@@ -15,20 +15,38 @@
 // "PP" , "AP", "PA", "LP", "PL", "AL", "LA", "LL"
 // 只有"AA"不会被视为可奖励，因为缺勤次数为 2 次（需要少于 2 次）。
 
-// 输入：n = 1
-// 输出：3
-
-// 输入：n = 10101
-// 输出：183236316
-
-// 暴力解
-// 遍历出所有情况，然后每个判断是否符合条件
-// 每次往后推一天生成新的情况，如果有不符合的就continue，符合的推入队列
 export function checkRecord(n: number): number {
-  let queue = ["A", "L", "P"];
-  const cases = [...queue];
-  let step = 1;
-  while (queue.length && step < n) {}
+  const situation = ["A", "L", "P"];
+  const mod = Math.pow(10, 9) + 7;
+  let queue = situation.map((item) => [item]);
 
-  return queue.length;
+  const judge = (arr: string[]) => {
+    let aNum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === "A") {
+        aNum++;
+        if (aNum === 2) return false;
+      }
+      if (i > 2 && arr[i] === "L" && arr[i - 1] === "L" && arr[i - 2] === "L")
+        return false;
+    }
+
+    return true;
+  };
+
+  while (queue.length && queue[0].length < n) {
+    let tmp = [];
+    for (let str of queue) {
+      for (let s of situation) {
+        const newStr = [...str];
+        newStr.push(s);
+        if (judge(newStr)) tmp.push(newStr);
+      }
+    }
+    queue = [...tmp];
+  }
+
+  return queue.length % mod;
 }
+
+// DP
