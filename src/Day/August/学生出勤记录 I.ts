@@ -24,10 +24,11 @@
 
 export function checkRecord(s: string): boolean {
   let aNum = 0;
-  let lNum = 0;
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === "A") aNum++;
-    if (s[i] === "L") lNum++;
+    if (s[i] === "A") {
+      aNum++;
+      if (aNum >= 2) return false;
+    }
     if (
       i < s.length - 1 &&
       i > 0 &&
@@ -38,6 +39,5 @@ export function checkRecord(s: string): boolean {
       return false;
   }
 
-  if (aNum < 2 && lNum <= 3) return true;
-  return false;
+  return true;
 }
