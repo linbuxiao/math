@@ -1,7 +1,11 @@
-import { slidingPuzzle } from "../src/BPS/TwoWay/滑动谜题";
+import { maxEnvelopes } from "../src/DP/俄罗斯套娃信封问题";
 console.log(
-  slidingPuzzle([
-    [1, 2, 3],
-    [4, 0, 5],
+  maxEnvelopes([
+    [4, 5],
+    [4, 6],
+    [6, 7],
+    [2, 3],
+    [1, 1],
+    [1, 1],
   ])
 );
