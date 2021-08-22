@@ -1,11 +1,11 @@
-import { maxEnvelopes } from "../src/DP/俄罗斯套娃信封问题";
+import { maxSumSubmatrix } from "../src/DP/矩形区域不超过 K 的最大数值和";
+
 console.log(
-  maxEnvelopes([
-    [4, 5],
-    [4, 6],
-    [6, 7],
-    [2, 3],
-    [1, 1],
-    [1, 1],
-  ])
+  maxSumSubmatrix(
+    [
+      [1, 0, 1],
+      [0, -2, 3],
+    ],
+    2
+  )
 );
