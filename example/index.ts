@@ -1,3 +1,2 @@
-import { getMaximumGenerated } from "../src/Day/August/获取生成数组中的最大值";
-
-getMaximumGenerated(7);
+import { deleteAndEarn } from "../src/DP/删除与获得点数";
+console.log(deleteAndEarn([2, 2, 4, 3, 3, 6, 7]));
