@@ -8,4 +8,6 @@
 
 // 请你返回你可以获得的披萨大小总和的最大值。
 
-export function maxSizeSlices(slices: number[]): number {}
+export function maxSizeSlices(slices: number[]): number {
+  return 1;
+}
