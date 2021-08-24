@@ -9,5 +9,27 @@
 // 请你返回你可以获得的披萨大小总和的最大值。
 
 export function maxSizeSlices(slices: number[]): number {
-  return 1;
+  const findMax = (nums: number[]): number => {
+    const dp: number[][] = Array.from({ length: slices.length / 3 }, () =>
+      new Array(nums.length).fill(0)
+    );
+
+    dp[0] = [...nums];
+
+    for (let i = 1; i < slices.length / 3; i++) {
+      for (let j = 0; j < slices.length - 1; j++) {
+        if (j < 2) {
+          dp[i][j] = nums[j];
+        } else {
+          dp[i][j] = Math.max(...dp[i - 1].slice(0, j - 1)) + nums[j];
+        }
+      }
+    }
+    return Math.max(...dp[dp.length - 1]);
+  };
+
+  return Math.max(
+    findMax(slices.slice(0, slices.length - 1)),
+    findMax(slices.slice(1, slices.length))
+  );
 }
