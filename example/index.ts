@@ -1,2 +1,13 @@
-import { deleteAndEarn } from "../src/DP/删除与获得点数";
-console.log(deleteAndEarn([2, 2, 4, 3, 3, 6, 7]));
+import { findCheapestPrice } from "../src/Day/August/K 站中转内最便宜的航班";
+
+findCheapestPrice(
+  3,
+  [
+    [0, 1, 100],
+    [1, 2, 100],
+    [0, 2, 500],
+  ],
+  0,
+  2,
+  1
+);
