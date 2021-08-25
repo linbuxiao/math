@@ -1,4 +1,2 @@
-import { findCheapestPrice } from "../src/Day/August/K 站中转内最便宜的航班";
-import { maxSizeSlices } from "../src/DP/3n 块披萨";
-
-maxSizeSlices([9, 5, 1, 7, 8, 4, 4, 5, 5, 8, 7, 7]);
+import { allPathsSourceTarget } from "../src/Day/August/所有可能的路径";
+console.log(allPathsSourceTarget([[1, 2], [3], [3], []]));
