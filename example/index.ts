@@ -1,21 +1,5 @@
-import { getKthFromEnd } from "../src/Day/September/链表中倒数第k个节点";
+import { LockingTree } from "../src/Game/树上的操作";
 
-getKthFromEnd(
-  {
-    val: 1,
-    next: {
-      val: 2,
-      next: {
-        val: 3,
-        next: {
-          val: 4,
-          next: {
-            val: 5,
-            next: null,
-          },
-        },
-      },
-    },
-  },
-  2
-);
+const i = new LockingTree([-1, 0, 3, 1, 0]);
+
+console.log(i.tree);
