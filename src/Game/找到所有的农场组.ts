@@ -63,7 +63,6 @@ export function findFarmland(land: number[][]): number[][] {
     for (let col = 0; col < n; col++) {
       if (land[row][col] === 1 && !used[row][col]) {
         // find
-
         ans.push(find(row, col));
       }
     }

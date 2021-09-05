@@ -15,41 +15,37 @@
 // unlock(int num, int user) 如果 id 为 user 的用户可以给节点 num 解锁，那么返回 true ，否则返回 false 。如果可以执行此操作，节点 num 变为 未上锁 状态。
 // upgrade(int num, int user) 如果 id 为 user 的用户可以给节点 num 升级，那么返回 true ，否则返回 false 。如果可以执行此操作，节点 num 会被 升级 。
 
-interface Tree {
-  val: number;
-  status: boolean;
-  user: number;
-  children: Tree[];
+class _TreeNode {
+  id: number;
+  status: boolean = false;
+  user: number = 0;
+  parent: null | _TreeNode = null;
+  children: _TreeNode[] = [];
+  constructor(id: number) {
+    this.id = id;
+  }
 }
 
 export class LockingTree {
-  tree: Tree;
+  map: Map<number, _TreeNode> = new Map();
   constructor(parent: number[]) {
-    const head = {
-      val: 0,
-      status: false,
-      user: 0,
-      children: [],
-    };
-
-    for (let i = 1; i < parent.length; i++) {
-      const k = parent[i];
-      const node = this.find(k, head)!;
-      console.log(node);
-
-      node.children.push({
-        val: i,
-        status: false,
-        user: 0,
-        children: [],
-      });
+    // 为每一个节点建立_TreeNode
+    for (let i = 0; i < parent.length; i++) {
+      this.map.set(i, new _TreeNode(i));
     }
 
-    this.tree = head;
+    // 串联节点
+    for (let i = 1; i < parent.length; i++) {
+      const node = this.map.get(i)!;
+      const p = parent[i];
+      const parentNode = this.map.get(p)!;
+      node.parent = parentNode;
+      parentNode.children.push(node);
+    }
   }
 
   lock(num: number, user: number): boolean {
-    const node = this.find(num)!;
+    const node = this.map.get(num)!;
     if (!node.status) {
       node.status = true;
       node.user = user;
@@ -58,9 +54,9 @@ export class LockingTree {
     return false;
   }
 
-  unlock(num: number, user: number): boolean {
-    const node = this.find(num)!;
-    if (node.status && node.user === user) {
+  unlock(num: number, user: number, force = false): boolean {
+    const node = this.map.get(num)!;
+    if (force || (node.status && node.user === user)) {
       node.status = false;
       node.user = 0;
       return true;
@@ -68,71 +64,42 @@ export class LockingTree {
     return false;
   }
 
-  upgrade(num: number, user: number): boolean {
-    const node = this.find(num)!;
-    if (!node.status && this.findChildren(node) && this.findFather(num, node)) {
-      node.status = true;
-      node.user = user;
-      for (let i = 0; i < node.children.length; i++) {
-        this.unlockAll(node.children[i]);
-      }
+  childrenLock(root: _TreeNode): boolean {
+    function dfs(node: _TreeNode): boolean {
+      if (node.status) return true;
+      if (!node.children.length) return false;
+      return node.children.some((n) => dfs(n));
+    }
 
+    return root.children.some((n) => dfs(n));
+  }
+
+  parentlock(root: _TreeNode): boolean {
+    let cur: _TreeNode | null = root;
+    while (cur) {
+      if (cur.status) {
+        return true;
+      }
+      cur = cur.parent;
+    }
+    return false;
+  }
+
+  upgrade(num: number, user: number): boolean {
+    const node = this.map.get(num)!;
+    const that = this;
+    function dfs(root: _TreeNode) {
+      that.unlock(root.id, user, true);
+      for (let n of root.children) {
+        dfs(n);
+      }
+    }
+
+    if (!node.status && this.childrenLock(node) && !this.parentlock(node)) {
+      dfs(node);
+      this.lock(num, user);
       return true;
     }
     return false;
   }
-
-  find(num: number, list = this.tree): Tree | null {
-    if (list.val === num) return list;
-    if (!list.children.length) return null;
-    for (let i = 0; i < list.children.length; i++) {
-      const result = this.find(num, list.children[i]);
-      if (result) return result;
-    }
-    return null;
-  }
-
-  findChildren(list: Tree): boolean {
-    if (list.status) return true;
-    if (!list.children.length) return false;
-    for (let i = 0; i < list.children.length; i++) {
-      if (this.findChildren(list.children[i])) return true;
-    }
-    return false;
-  }
-
-  findFather(num: number, list: Tree): boolean {
-    if (!this.find(num, list)) return false;
-    if (list.status) return false;
-    let flag = true;
-    for (let i = 0; i < list.children.length; i++) {
-      if (this.findFather(num, list.children[i])) flag = false;
-    }
-
-    return flag;
-  }
-
-  unlockAll(list: Tree) {
-    list.status = false;
-    list.user = 0;
-    for (let i = 0; i < list.children.length; i++) {
-      this.unlockAll(list.children[i]);
-    }
-  }
 }
-
-/**
- * Your LockingTree object will be instantiated and called as such:
- * var obj = new LockingTree(parent)
- * var param_1 = obj.lock(num,user)
- * var param_2 = obj.unlock(num,user)
- * var param_3 = obj.upgrade(num,user)
- */
-
-/**
- * Your LockingTree object will be instantiated and called as such:
- * var obj = new LockingTree(parent)
- * var param_1 = obj.lock(num,user)
- * var param_2 = obj.unlock(num,user)
- * var param_3 = obj.upgrade(num,user)
- */
