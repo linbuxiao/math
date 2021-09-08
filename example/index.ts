@@ -1,3 +1,3 @@
-import { balancedStringSplit } from "../src/Day/September/分割平衡字符串";
+import { findMaximizedCapital } from "../src/Day/September/IPO";
 
-console.log(balancedStringSplit("RLRRLLRLRL"));
+console.log(findMaximizedCapital(2, 0, [1, 2, 3], [0, 1, 1]));
