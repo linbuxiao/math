@@ -1,9 +1,26 @@
-import { KthLargest } from "../src/Heap/数据流中的第 K 大元素";
-
-const heap = new KthLargest(2, [0]);
-
-console.log(heap.add(-1));
-console.log(heap.add(1));
-console.log(heap.add(-2));
-console.log(heap.add(-4));
-console.log(heap.add(3));
+import { fullJustify } from "../src/Day/September/文本左右对齐";
+console.log(
+  fullJustify(
+    [
+      "Science",
+      "is",
+      "what",
+      "we",
+      "understand",
+      "well",
+      "enough",
+      "to",
+      "explain",
+      "to",
+      "a",
+      "computer.",
+      "Art",
+      "is",
+      "everything",
+      "else",
+      "we",
+      "do",
+    ],
+    20
+  )
+);
