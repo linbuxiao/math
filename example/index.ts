@@ -1,9 +1,11 @@
-import { interchangeableRectangles } from "../src/Game/可互换矩形的组数";
+import { numberOfBoomerangs } from "../src/Day/September/回旋镖的数量";
+
 console.log(
-  interchangeableRectangles([
-    [4, 8],
-    [3, 6],
-    [10, 20],
-    [15, 30],
+  numberOfBoomerangs([
+    [0, 0],
+    [1, 0],
+    [-1, 0],
+    [0, 1],
+    [0, -1],
   ])
 );
