@@ -1,11 +1,5 @@
-import { numberOfBoomerangs } from "../src/Day/September/回旋镖的数量";
+import { minSessions } from "../src/DP/完成任务的最少工作时间段";
 
-console.log(
-  numberOfBoomerangs([
-    [0, 0],
-    [1, 0],
-    [-1, 0],
-    [0, 1],
-    [0, -1],
-  ])
-);
+console.log(+parseInt("1010", 2) | +parseInt("1000", 2));
+
+console.log(minSessions([1, 2, 3], 3));
