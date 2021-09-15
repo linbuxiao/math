@@ -17,7 +17,6 @@
 // };
 
 export function interchangeableRectangles(rectangles: number[][]): number {
-  // const scale = rectangles.map(([w, h])=> w / h)
   const map = new Map<number, number>();
 
   for (let i = 0; i < rectangles.length; i++) {
