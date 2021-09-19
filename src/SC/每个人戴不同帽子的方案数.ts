@@ -7,18 +7,35 @@
 // 由于答案可能很大，请返回它对 10^9 + 7 取余后的结果。
 
 export function numberWays(hats: number[][]): number {
-  const m = hats.length;
-  const n = 1 << m;
-  const mod = Math.pow(10, 7) + 7;
+  let maxHatId = 0;
+  const map = new Map<number, number[]>();
+  for (let i = 0; i < hats.length; i++) {
+    for (let h of hats[i]) {
+      maxHatId = Math.max(maxHatId, h);
+      if (map.has(h)) {
+        map.get(h)!.push(i);
+      } else {
+        map.set(h, [i]);
+      }
+    }
+  }
 
-  // for(let h = 1; h < 41; h++) {
-  //   for(let s = 0; s < n; s++) {
-  //     dp[h][s] = (dp[h][s] + dp[h - 1][s]) % mod
-  //     for(let i = 0; i < m; i++) {
-  //       if(s & (1 << i) !== 0 && )
-  //     }
-  //   }
-  // }
+  const f: any[] = Array.from({ length: maxHatId + 1 }).fill(1 << hats.length);
 
-  return 1;
+  for (let i = 1; i <= maxHatId; i++) {
+    for (let mask = 0; mask < 1 << hats.length; mask++) {
+      f[i][mask] = f[i - 1][mask];
+      const res = map.get(i)!;
+      if (!res) continue;
+
+      for (let j of res) {
+        if (mask & (1 << j)) {
+          f[i][mask] += f[i - 1][mask ^ (1 << j)];
+          f[i][mask] %= Math.pow(10, 9) + 7;
+        }
+      }
+    }
+  }
+
+  return f[maxHatId][(1 << hats.length) - 1];
 }
