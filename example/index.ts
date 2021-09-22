@@ -1,3 +1,15 @@
-import { findNumberOfLIS } from "../src/Day/September/最长递增子序列的个数";
+import { splitListToParts } from "../src/Day/September/分隔链表";
+import { ListNode } from "../src/Utils";
 
-console.log(findNumberOfLIS([1, 2, 4, 3, 5, 4, 7, 2]));
+console.log(
+  splitListToParts(
+    new ListNode(1, {
+      val: 2,
+      next: {
+        val: 3,
+        next: null,
+      },
+    }),
+    5
+  )
+);
