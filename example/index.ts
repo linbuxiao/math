@@ -1,15 +1,16 @@
-import { splitListToParts } from "../src/Day/September/分隔链表";
-import { ListNode } from "../src/Utils";
+import { flatten } from "../src/Day/September/扁平化多级双向链表";
 
-console.log(
-  splitListToParts(
-    new ListNode(1, {
-      val: 2,
-      next: {
-        val: 3,
-        next: null,
-      },
-    }),
-    5
-  )
-);
+class DNode {
+  val: number;
+  prev: DNode | null;
+  next: DNode | null;
+  child: DNode | null;
+  constructor(val?: number, prev?: DNode, next?: DNode, child?: DNode) {
+    this.val = val === undefined ? 0 : val;
+    this.prev = prev === undefined ? null : prev;
+    this.next = next === undefined ? null : next;
+    this.child = child === undefined ? null : child;
+  }
+}
+
+console.log(flatten(new DNode(1, undefined, new DNode(2, undefined, null))));
