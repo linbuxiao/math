@@ -1,3 +1,3 @@
-import { minDistance } from "../src/Day/September/两个字符串的删除操作";
+import { getSum } from "../src/Day/September/两整数之和";
 
-console.log(minDistance("sea", "eat"));
+console.log(getSum(1, 2));
