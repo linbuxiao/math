@@ -1,3 +1,3 @@
-import { getSum } from "../src/Day/September/两整数之和";
+import { numDecodings } from "../src/Day/September/解码方法 II";
 
-console.log(getSum(1, 2));
+console.log(numDecodings("1*1*22*19"), 19064);
