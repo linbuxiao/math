@@ -1,3 +1,5 @@
-import { numDecodings } from "../src/Day/September/解码方法 II";
+import { pathSum, TreeNode } from "../src/Day/September/路径总和 III";
 
-console.log(numDecodings("1*1*22*19"), 19064);
+const params = new TreeNode(-2, null, new TreeNode(-3));
+
+console.log(pathSum(params, -5));
