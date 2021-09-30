@@ -1,2 +1,9 @@
-import { findMinMoves } from "../src/Day/September/超级洗衣机";
-console.log(findMinMoves([0, 3, 0]));
+import { computeArea } from "../src/Day/September/矩形面积";
+console.log(computeArea(-2, -2, 2, 2, -2, 2, 2, 4));
+
+-2 - 2;
+2;
+2 - 2;
+2;
+2;
+4;
