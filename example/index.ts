@@ -1,9 +1,3 @@
-import { computeArea } from "../src/Day/September/矩形面积";
-console.log(computeArea(-2, -2, 2, 2, -2, 2, 2, 4));
+import { toHex } from "../src/Day/October/转换为十六进制数";
 
--2 - 2;
-2;
-2 - 2;
-2;
-2;
-4;
+console.log(toHex(-1));
