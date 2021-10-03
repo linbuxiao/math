@@ -1,3 +1,2 @@
-import { toHex } from "../src/Day/October/转换为十六进制数";
-
-console.log(toHex(-1));
+import { fractionToDecimal } from "../src/Day/October/分数到小数";
+console.log(fractionToDecimal(4, -333));
