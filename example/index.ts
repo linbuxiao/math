@@ -1,2 +1,3 @@
-import { fractionToDecimal } from "../src/Day/October/分数到小数";
-console.log(fractionToDecimal(4, -333));
+import { thirdMax } from "../src/Day/October/第三大的数";
+
+console.log(thirdMax([3, 2, 1]));
