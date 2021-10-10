@@ -1,3 +1,2 @@
-import { thirdMax } from "../src/Day/October/第三大的数";
-
-console.log(thirdMax([3, 2, 1]));
+import { arrangeCoins } from "../src/Day/October/排列硬币";
+console.log(arrangeCoins(8));
