@@ -1,2 +1,3 @@
-import { arrangeCoins } from "../src/Day/October/排列硬币";
-console.log(arrangeCoins(8));
+import { divide } from "../src/Day/October/两数相除";
+
+console.log(divide(-2147483648, 2));
