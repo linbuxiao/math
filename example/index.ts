@@ -1,3 +1,2 @@
-import { divide } from "../src/Day/October/两数相除";
-
-console.log(divide(-2147483648, 2));
+import { peakIndexInMountainArray } from "../src/Day/October/剑指 Offer II 069. 山峰数组的顶部";
+console.log(peakIndexInMountainArray([18, 29, 38, 59, 98, 100, 99, 98, 90]));
