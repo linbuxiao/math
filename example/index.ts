@@ -1,2 +1,2 @@
-import { findComplement } from "../src/Day/October/数字的补数";
-console.log(findComplement(5));
+import { majorityElement } from "../src/Day/October/求众数 II";
+console.log(majorityElement([1]));
