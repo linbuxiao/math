@@ -11,5 +11,5 @@ export function singleNumber(nums: number[]): number[] {
     }
   }
 
-  return Array.from(set)
-};
+  return Array.from(set);
+}

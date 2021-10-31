@@ -6,30 +6,31 @@
 // 第二行由字符 "asdfghjkl" 组成。
 // 第三行由字符 "zxcvbnm" 组成。
 
-
 export function findWords(words: string[]): string[] {
   // 简单哈希
   const set = [
-    new Set(['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p']),
-    new Set(['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l']),
-    new Set(['z', 'x', 'c', 'v', 'b', 'n', 'm'])
-  ]
+    new Set(["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]),
+    new Set(["a", "s", "d", "f", "g", "h", "j", "k", "l"]),
+    new Set(["z", "x", "c", "v", "b", "n", "m"]),
+  ];
 
-  const result: string[] = []
+  const result: string[] = [];
 
-  for(const instanceWord of words) {
-    const word = instanceWord.toLowerCase()
-    if(set.some(s => {
-      for(let i = 0; i < word.length; i++) { 
-        if(!s.has(word[i])) {
-          return false
+  for (const instanceWord of words) {
+    const word = instanceWord.toLowerCase();
+    if (
+      set.some((s) => {
+        for (let i = 0; i < word.length; i++) {
+          if (!s.has(word[i])) {
+            return false;
+          }
         }
-      }
-      return true
-    })) {
-      result.push(instanceWord)
+        return true;
+      })
+    ) {
+      result.push(instanceWord);
     }
   }
 
-  return result
-};
+  return result;
+}
