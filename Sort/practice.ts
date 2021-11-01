@@ -2,10 +2,10 @@
 // 输入：nums = [-1,0,1,2,-1,-4]
 // 输出：[[-1,-1,2],[-1,0,1]]
 
-import { ListNode } from "../Utils";
+import { ListNode } from "../Utils/index.ts";
 
 export function threeSum(nums: number[]) {
-  let arr: number[][] = [];
+  const arr: number[][] = [];
   // a. 输入数目小于3， 返回空数组
   if (nums.length < 3) return [];
 
@@ -108,7 +108,7 @@ export function threeSumClosest(nums: number[], target: number): number {
   return result;
 }
 
-// 3. 给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。
+// 3. 给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。
 // 输入：nums = [1,0,-1,0,-2,2], target = 0
 // 输出：[[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
 
@@ -183,11 +183,11 @@ export function merge(intervals: number[][]): number[][] {
   intervals.sort((a, b) => a[0] - b[0]);
 
   for (let a = 0; a < intervals.length - 1; a++) {
-    let start = intervals[a][1];
-    let end = intervals[a + 1][0];
+    const start = intervals[a][1];
+    const end = intervals[a + 1][0];
     if (start >= end) {
-      let data = [...intervals[a], ...intervals[a + 1]];
-      let item = [Math.min(...data), Math.max(...data)];
+      const data = [...intervals[a], ...intervals[a + 1]];
+      const item = [Math.min(...data), Math.max(...data)];
       intervals.splice(a, 2, item);
       a--;
     }
@@ -211,7 +211,7 @@ export function sortList(head: ListNode | null) {
 
   // b. 合并两个有序链表
   function mergeTwoList(a: ListNode | null, b: ListNode | null) {
-    let preHead = new ListNode(-1);
+    const preHead = new ListNode(-1);
     let cur = preHead;
     while (a && b) {
       if (a.val < b.val) {
@@ -234,10 +234,10 @@ export function sortList(head: ListNode | null) {
       return head;
     }
 
-    let middle = middleNode(head);
+    const middle = middleNode(head);
 
     // middle.next代表剩下的
-    let temp = middle.next;
+    const temp = middle.next;
 
     // 赋予null之后，截断
     middle.next = null;
