@@ -2,7 +2,7 @@
 // 输入：nums = [-1,0,1,2,-1,-4]
 // 输出：[[-1,-1,2],[-1,0,1]]
 
-import { ListNode } from '../type.ts'
+import { ListNode } from "../type.ts";
 
 export function threeSum(nums: number[]) {
   const arr: number[][] = [];

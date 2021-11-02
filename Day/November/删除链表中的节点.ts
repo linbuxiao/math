@@ -5,7 +5,7 @@ import { ListNode } from "../../type.ts";
 // 题目数据保证需要删除的节点 不是末尾节点 。
 
 export function deleteNode(root: ListNode | null): void {
-  if(root === null || root.next === null) return;
-  root.val = root.next.val
-  root.next = root.next.next
+  if (root === null || root.next === null) return;
+  root.val = root.next.val;
+  root.next = root.next.next;
 }
