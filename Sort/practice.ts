@@ -1,8 +1,8 @@
-// 1. 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
+// 1. 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
 // 输入：nums = [-1,0,1,2,-1,-4]
 // 输出：[[-1,-1,2],[-1,0,1]]
 
-import { ListNode } from "../Utils/index.ts";
+import { ListNode } from '../type.ts'
 
 export function threeSum(nums: number[]) {
   const arr: number[][] = [];
@@ -21,7 +21,7 @@ export function threeSum(nums: number[]) {
     let r = nums.length - 1;
 
     while (l < r) {
-      let temp = nums[p] + nums[l] + nums[r];
+      const temp = nums[p] + nums[l] + nums[r];
 
       if (temp > 0) {
         r--;
@@ -52,7 +52,7 @@ export function threeSum(nums: number[]) {
 function handleArray(nums: number[], start?: number, end?: number) {
   if (!start && start !== 0) start = 0;
   if (!end && end !== 0) end = nums.length - 1;
-  let middle = handleQuickSort(nums, start, end);
+  const middle = handleQuickSort(nums, start, end);
   if (!middle && middle !== 0) return null;
   handleArray(nums, start, middle - 1);
   handleArray(nums, middle + 1, end);
@@ -64,7 +64,7 @@ function handleQuickSort(
   end: number,
 ): number | null {
   if (start >= end) return null;
-  let p = nums[start];
+  const p = nums[start];
   let left = start + 1;
   let right = end;
   while (left < right) {
@@ -82,13 +82,13 @@ function handleQuickSort(
   return right;
 }
 
-// 2. 给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
+// 2. 给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
 // 输入：nums = [-1,2,1,-4], target = 1
 // 输出：2
 
 export function threeSumClosest(nums: number[], target: number): number {
   if (nums.length === 3) return nums.reduce((a, b) => a + b);
-  let res: number[] = [];
+  const res: number[] = [];
   nums.sort();
   for (let x = 0; x < nums.length; x++) {
     if (x > 0 && nums[x] === nums[x - 1]) continue;
@@ -100,7 +100,7 @@ export function threeSumClosest(nums: number[], target: number): number {
     }
   }
 
-  let result = res.reduce((a, b) => {
+  const result = res.reduce((a, b) => {
     if (Math.abs(b - target) < Math.abs(a - target)) return b;
     return a;
   });
@@ -108,12 +108,12 @@ export function threeSumClosest(nums: number[], target: number): number {
   return result;
 }
 
-// 3. 给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。
+// 3. 给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。
 // 输入：nums = [1,0,-1,0,-2,2], target = 0
 // 输出：[[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
 
 export function fourSum(nums: number[], target: number): number[][] {
-  let res: number[][] = [];
+  const res: number[][] = [];
   nums.sort();
 
   for (let a = 0; a < nums.length; a++) {
@@ -147,13 +147,13 @@ export function fourSum(nums: number[], target: number): number[][] {
 // ]
 
 export function groupAnagrams(strs: string[]): string[][] {
-  let cur = [];
+  const cur = [];
   for (let a = 0; a < strs.length; a++) {
     // a. 重新排序，索引不变
     cur[a] = strs[a].split("").sort().join("");
   }
-  let s = [];
-  let flag: number[] = [];
+  const s = [];
+  const flag: number[] = [];
   // b. 遍历，
   for (let b = 0; b < cur.length; b++) {
     if (
@@ -162,7 +162,7 @@ export function groupAnagrams(strs: string[]): string[][] {
     ) {
       continue;
     }
-    let k = [strs[b]];
+    const k = [strs[b]];
     let p = cur.length - 1;
     while (p > b) {
       if (cur[b] === cur[p]) {
