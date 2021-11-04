@@ -1,5 +1,5 @@
-import { distributeCandies } from "./Day/November/%E5%88%86%E7%B3%96%E6%9E%9C.ts";
+import { isPerfectSquare } from "./Day/November/%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0.ts";
 
 console.log(
-  distributeCandies([1, 1, 2, 3]),
+  isPerfectSquare(16),
 );
