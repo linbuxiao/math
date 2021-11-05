@@ -1,5 +1,6 @@
-import { isPerfectSquare } from "./Day/November/%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0.ts";
+import { longestSubsequence } from './Day/November/%E6%9C%80%E9%95%BF%E5%AE%9A%E5%B7%AE%E5%AD%90%E5%BA%8F%E5%88%97.ts'
 
 console.log(
-  isPerfectSquare(16),
+longestSubsequence([3,4,-3,-2,-4], -5)
 );
+
