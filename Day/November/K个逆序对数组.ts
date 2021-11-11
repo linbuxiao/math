@@ -7,36 +7,36 @@
 export function kInversePairs(n: number, k: number): number {
   // 找出所有包含从 1 到 n 的数字 意味着一次全排列
   const permute = function (nums: number[]) {
-    const res: number[][] = []
-    const path: number[] = []
+    const res: number[][] = [];
+    const path: number[] = [];
     const dfs = (nums: number[], path: number[]) => {
-      if(path.length === nums.length) {
-        return res.push(path.concat())
+      if (path.length === nums.length) {
+        return res.push(path.concat());
       }
 
-      for(let i = 0; i < nums.length; i++) {
-        if(path.indexOf(nums[i]) > -1) continue
-        path.push(nums[i])
-        dfs(nums, path)
-        path.pop()
+      for (let i = 0; i < nums.length; i++) {
+        if (path.indexOf(nums[i]) > -1) continue;
+        path.push(nums[i]);
+        dfs(nums, path);
+        path.pop();
+      }
+    };
+
+    dfs(nums, path);
+    return res;
+  };
+
+  const allArr = permute(Array.from({ length: n }, (_, i) => i + 1));
+  let res = 0;
+  allArr.forEach((arr) => {
+    let times = 0;
+    for (let i = 0; i < arr.length && times <= k; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] > arr[j]) times++;
       }
     }
+    if (times === k) res++;
+  });
 
-    dfs(nums, path)
-    return res
-  }
-
-  const allArr = permute(Array.from({length: n}, (_, i) => i + 1))
-  let res = 0
-  allArr.forEach(arr => {
-    let times = 0
-    for(let i = 0; i < arr.length && times <= k; i++) {
-      for(let j = i + 1; j < arr.length; j++) {
-        if(arr[i] > arr[j]) times++
-      }
-    }
-    if(times === k) res++
-  })
-  
-  return res
+  return res;
 }
