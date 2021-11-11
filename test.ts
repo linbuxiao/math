@@ -1,5 +1,6 @@
-import { findMinStep } from "./Day/November/%E7%A5%96%E7%8E%9B%E6%B8%B8%E6%88%8F.ts";
+import { kInversePairs } from './Day/November/K%E4%B8%AA%E9%80%86%E5%BA%8F%E5%AF%B9%E6%95%B0%E7%BB%84.ts'
 
 console.log(
-  findMinStep("WWRRBBWW", "WRBRW"),
+kInversePairs(1000, 0)
+
 );
