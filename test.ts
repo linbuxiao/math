@@ -1,4 +1,3 @@
-import { getMoneyAmount } from "./Day/November/%E7%8C%9C%E6%95%B0%E5%AD%97%E5%A4%A7%E5%B0%8F%20II.ts";
-console.log(
-  getMoneyAmount(10),
-);
+import { MapSum } from "./Day/November/%E9%94%AE%E7%9B%98%E6%98%A0%E5%B0%84.ts";
+
+new MapSum();
